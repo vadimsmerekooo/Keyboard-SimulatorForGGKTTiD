@@ -42,7 +42,7 @@
             </Rectangle>
 
             <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20" IsReadOnly="True" Name="linePrograms" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" IsEnabled="False" Background="#FF859DC7" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="20"></TextBox>
-            <Rectangle Grid.Column="1" Margin="10" Fill="White" RadiusY="10" RadiusX="10" >
+            <Rectangle Name="RectText" Grid.Column="1" Margin="10" Fill="White" RadiusY="10" RadiusX="10" >
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
                 </Rectangle.Effect>

@@ -119,6 +119,7 @@ namespace KSGGKTTiD
             this.OemPeriod.Content = ".";
             this.OemQuestion.Content = "/";
         }
+
         Random rendChar = new Random();
         string baceString = "QWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()_+{}|:\"<>?1234567890[],./\\`-=;'qwertyuiopasdfghjklzxcvbnm";
         bool flagCapsLock = true;
@@ -260,7 +261,8 @@ namespace KSGGKTTiD
                     {
                         Speed();
                     }
-                    lineUser.Foreground = new SolidColorBrush(Colors.Black);
+                    lineUser.Background = new SolidColorBrush(Colors.LightGreen);
+                    RectText.Fill = new SolidColorBrush(Colors.LightGreen);
                 }
                 else
                 {
@@ -268,7 +270,8 @@ namespace KSGGKTTiD
                     {
                         fails++;
                     }
-                    lineUser.Foreground = new SolidColorBrush(Colors.Red);
+                    lineUser.Background = new SolidColorBrush(Colors.Red);
+                    RectText.Fill = new SolidColorBrush(Colors.Red);
                     Fails.Content = fails;
                 }
                 if (lineUser.Text.Length == linePrograms.Text.Length)

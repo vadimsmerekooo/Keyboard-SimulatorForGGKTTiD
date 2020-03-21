@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:KSGGKTTiD"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
         KeyDown="Window_KeyDown"
         PreviewKeyUp="Window_PreviewKeyUp"
@@ -11,23 +12,27 @@
  
     <Grid x:Name="Grid" Background="WhiteSmoke">
         <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="75"/>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
+            <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#FF340051">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0 0 60 0">
-                <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Bahnshrift" Text="Добро пожаловать, KeyFriend! Приложение полностью бесплатное! Но можете поддержать, меня подпиской на инстарам (ссылка в шапке программы)!" TextAlignment="Center"  FontSize="25" HorizontalAlignment="Center"/>
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Bahnshrift" Text="Добро пожаловать, KeyFriend! Приложение полностью бесплатное! Но можете поддержать, меня, подпиской на инстарам (ссылка в шапке программы)!" TextAlignment="Center" VerticalAlignment="Center"  FontSize="25" HorizontalAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect BlurRadius="5" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+
+                    </TextBlock.Effect>
+                </TextBlock>
 
             </StackPanel>
         </Grid>
@@ -44,7 +49,8 @@
                 </Rectangle.Effect>
             </Rectangle>
 
-            <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  Name="linePrograms" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" IsEnabled="False" Opacity="1" Background="#FF3C5BE4" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
+            <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  Name="linePrograms" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Opacity="1" Background="#FF3C5BE4" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
+            <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  IsEnabled="False" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Opacity="1" Background="Transparent" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
             <Rectangle Name="RectText" Grid.Column="1" Margin="10" Fill="White" RadiusY="10" RadiusX="10" >
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
@@ -53,30 +59,38 @@
             <TextBox x:Name="lineUser" Grid.Column="1" TextWrapping="Wrap" Background="White" FontFamily="Bahnschrift" HorizontalContentAlignment="Left" Cursor="Hand"  FontSize="20" VerticalContentAlignment="Top" BorderThickness="0"  TextChanged="lineUser_TextChanged" IsEnabled="False" Margin="20"/>
 
         </Grid>
-        <Grid Grid.Row="2" Background="#FF996AB4" Grid.RowSpan="2">
+        <Grid Grid.Row="2" Background="#FF996AB4" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Foreground="White" FontFamily="Bahnshrift" FontSize="25" Content="Сложность:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80 0"/>
-            <ComboBox x:Name="Combobox" Grid.Column="0" Width="300" HorizontalAlignment="Right" Margin="10" Height="40" SelectedIndex="0"/>
-            <Button  Content="Старт" Grid.Column="1" FontSize="20" Name="Start" HorizontalAlignment="Left" Width="150" Margin="10 0 0 0" Height="45" Click="Start_Click"></Button>
-            <Button HorizontalAlignment="Center" Grid.Column="1" FontSize="20" Name="Stop" Content="Стоп" Width="150" Height="45" Margin="-30 0 0 0" Click="Stop_Click"/>
-            <Rectangle Grid.Column="1" Margin="338,10,10,10" Fill="#FF340051" RadiusY="10" RadiusX="10" >
-                <Rectangle.Effect>
-                    <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Margin="0 7">
-                <Label Foreground="White" Content="Ошибок:" FontSize="21" Height="40" Width="104"/>
-                <Label Foreground="White" Content="0" FontSize="21" Name="Fails" Height="40" FontWeight="Bold" Width="92"/>
-            </StackPanel>
-            <StackPanel Grid.Column="1" Margin="0,0,0,10" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="196" Height="40">
-                <Label Foreground="White" Content="Скорость:" FontSize="21" Width="104"/>
-                <Label Foreground="White" FontSize="21" Content="0" x:Name="SpeedChar" FontWeight="Bold" Width="80"/>
-            </StackPanel>
+            <ComboBox x:Name="Combobox" HorizontalContentAlignment="Center" Foreground="White" FontFamily="Bahnshrift" FontSize="20" Grid.Column="0" Width="300" HorizontalAlignment="Right" Margin="10" Height="40" SelectedIndex="0"/>
+            <Grid Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="340" />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button  Content="Старт" Grid.Column="0" FontSize="20" Name="Start" HorizontalAlignment="Left" Width="150" Margin="10 0 0 0" Height="45" Click="Start_Click"></Button>
+                <Button HorizontalAlignment="Right" Grid.Column="0" FontSize="20" Name="Stop" Content="Стоп" Width="120" Height="45" Margin="0 0 45 0" Click="Stop_Click"/>
+                <materialDesign:PackIcon Kind="Restart" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" ToolTip="Изменить текст!" MouseDown="PackIcon_MouseDown"/>
+
+                <Rectangle Grid.Column="1" Fill="#FF340051" Margin="2" RadiusY="10" RadiusX="10" >
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Margin="5 -3">
+                    <Label Foreground="White" Content="Ошибок:" FontSize="21" Height="40" Width="104"/>
+                    <Label Foreground="White" Content="0" FontSize="21" Name="Fails" Height="40" FontWeight="Bold" Width="92"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="5 0 0 0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="196" Height="40">
+                    <Label Foreground="White" Content="Скорость:" FontSize="21" Width="104"/>
+                    <Label Foreground="White" FontSize="21" Content="0" x:Name="SpeedChar" FontWeight="Bold" />
+                </StackPanel>
+            </Grid>
         </Grid>
-        <Grid x:Name="HeaderGrid" Grid.Row="4">
+        <Grid x:Name="HeaderGrid" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"/>
                 <ColumnDefinition/>
@@ -118,7 +132,7 @@
                 <!-- <materialDesign:PackIcon Kind="ArrowLeft"/> !-->
             </Button>
         </Grid>
-        <Grid x:Name="PreHeaderGrid" Grid.Row="5">
+        <Grid x:Name="PreHeaderGrid" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition/>
@@ -158,7 +172,7 @@
             <Button Grid.Column="12" Name="Oem6" Content="]" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
             <Button Grid.Column="13" Name="Oem5" Content="\" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
         </Grid>
-        <Grid x:Name="CenterGrid" Grid.Row="6">
+        <Grid x:Name="CenterGrid" Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition/>
@@ -197,7 +211,7 @@
             <Button Grid.Column="12" Name="Return" Content="Enter" Height="75" Margin="2" Background="Gray" FontSize="20"/>
 
         </Grid>
-        <Grid x:Name="PreLowerGrid" Grid.Row="7" >
+        <Grid x:Name="PreLowerGrid" Grid.Row="6" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="160"/>
                 <ColumnDefinition/>
@@ -234,7 +248,7 @@
             <Button Grid.Column="11" Name="RightShift" Content="Shift" Height="75" Margin="2" Background="Gray" FontSize="20"/>
 
         </Grid>
-        <Grid x:Name="LowerGrid" Grid.Row="8">
+        <Grid x:Name="LowerGrid" Grid.Row="7">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

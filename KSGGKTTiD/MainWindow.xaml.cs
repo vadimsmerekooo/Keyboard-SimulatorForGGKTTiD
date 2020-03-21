@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -122,7 +123,6 @@ namespace KSGGKTTiD
         }
 
         Random rendChar = new Random();
-        string baceString = "QWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()_+{}|:\"<>?1234567890[],./\\`-=;'qwertyuiopasdfghjklzxcvbnm";
         bool flagCapsLock = true;
         bool flagBackspase = true;
         private bool backClick = false;
@@ -141,21 +141,6 @@ namespace KSGGKTTiD
         {
             tempTimer++;
             Speed();
-        }
-        private void CollectString(int countChar, string baceString, bool flagSensitive)
-        {
-            string carhs = "";
-            int sensitive = (flagSensitive) ? 47 : 0;
-            for (int i = 0; i < countChar; i++)
-            {
-                carhs += baceString[rendChar.Next(sensitive, baceString.Length)];
-            }
-            carhs += " ";
-            int countString = (flagSensitive) ? 75 : 70;
-            for (int i = 0; i < countString; i++)
-            {
-                linePrograms.Text += carhs[rendChar.Next(0, carhs.Length)];
-            }
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
@@ -288,6 +273,39 @@ namespace KSGGKTTiD
                 }
             }
         }
+        private string RandomText(string slojn)
+        {
+        string[] text = null;
+            if(slojn == "легкий")
+            {
+                using(StreamReader sr = new StreamReader(@"../../Resource/Text/eazy.txt"))
+                {
+                    text = File.ReadAllLines(@"../../Resource/Text/eazy.txt");
+                }
+            }
+            else if(slojn == "средний")
+            {
+                using (StreamReader sr = new StreamReader(@"../../Resource/Text/midle.txt"))
+                {
+                    text = File.ReadAllLines(@"../../Resource/Text/midle.txt");
+                }
+            }
+            else if(slojn == "тяжелый")
+            {
+                using (StreamReader sr = new StreamReader(@"../../Resource/Text/hard.txt"))
+                {
+                    text = File.ReadAllLines(@"../../Resource/Text/hard.txt");
+                }
+            }
+            else if(slojn == "супер-тяжелый")
+            {
+                using (StreamReader sr = new StreamReader(@"../../Resource/Text/super-hard.txt"))
+                {
+                    text = File.ReadAllLines(@"../../Resource/Text/super-hard.txt");
+                }
+            }
+            return text[rendChar.Next(0, text.Length -1)];
+        }
         void Speed()
         {
             SpeedChar.Content = Math.Round(((double)lineUser.Text.Length / tempTimer) * 60).ToString() + " с/м";
@@ -296,7 +314,7 @@ namespace KSGGKTTiD
         {
             tempTimer = 0;
             timer.Start();
-            linePrograms.Text = "Вадим Шкуратов Молодец, политик лидер и боец!";
+            linePrograms.Text = RandomText(Combobox.SelectedValue.ToString().ToLower());
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
             lineUser.Text = string.Empty;
@@ -324,11 +342,23 @@ namespace KSGGKTTiD
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             timer.Stop();
-            linePrograms.Text = "Вадим Шкуратов Молодец, политик лидер и боец!";
             lineUser.IsReadOnly = true;
             lineUser.IsEnabled = false;
             Fails.Content = 0.ToString();
             SpeedChar.Content = 0.ToString();
+        }
+
+        private void PackIcon_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            tempTimer = 0;
+            timer.Start();
+            linePrograms.Text = RandomText(Combobox.SelectedValue.ToString().ToLower());
+            lineUser.IsReadOnly = false;
+            lineUser.IsEnabled = true;
+            lineUser.Text = string.Empty;
+            Fails.Content = 0.ToString();
+            SpeedChar.Content = 0.ToString();
+            lineUser.Focus();
         }
     }
 }

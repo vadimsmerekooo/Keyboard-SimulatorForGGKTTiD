@@ -19,3 +19,4 @@ C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGK
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\Resource\Window\AythRegWIndow.g.cs
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\Resource\Window\AythRegWIndow.baml
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.csprojResolveAssemblyReference.cache

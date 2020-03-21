@@ -6,7 +6,6 @@ C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\Mater
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MaterialDesignColors.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MaterialDesignThemes.Wpf.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MaterialDesignThemes.Wpf.xml
-C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.csprojResolveAssemblyReference.cache
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\MainWindow.g.cs
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\App.g.cs
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD_MarkupCompile.cache
@@ -18,3 +17,5 @@ C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGK
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.csproj.GenerateResource.Cache
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.exe
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.pdb
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\Resource\Window\AythRegWIndow.g.cs
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\Resource\Window\AythRegWIndow.baml

@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Threading;
 
 namespace KSGGKTTiD
@@ -124,6 +125,7 @@ namespace KSGGKTTiD
         string baceString = "QWERTYUIOPASDFGHJKLZXCVBNM~!@#$%^&*()_+{}|:\"<>?1234567890[],./\\`-=;'qwertyuiopasdfghjklzxcvbnm";
         bool flagCapsLock = true;
         bool flagBackspase = true;
+        private bool backClick = false;
         bool mesStop = true;
         DispatcherTimer timer = null;
         public MainWindow()
@@ -132,6 +134,7 @@ namespace KSGGKTTiD
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
+            Combobox.ItemsSource = new string[] {"Легкий", "Средний", "Тяжелый", "Супер-тяжелый" };
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -197,9 +200,11 @@ namespace KSGGKTTiD
                                 else if (e.Key.ToString() == "Back")
                                 {
                                     flagBackspase = false;
+                                    backClick = true;
                                 }
                                 else
                                 {
+                                    backClick = false;
                                     flagBackspase = true;
                                 }
                             }
@@ -257,24 +262,24 @@ namespace KSGGKTTiD
                 string str = linePrograms.Text.Substring(0, lineUser.Text.Length);
                 if (lineUser.Text.Equals(str))
                 {
-                    if (flagBackspase)
+                    if (flagBackspase )
                     {
                         Speed();
                     }
-                    lineUser.Background = new SolidColorBrush(Colors.LightGreen);
-                    RectText.Fill = new SolidColorBrush(Colors.LightGreen);
+                    lineUser.Background = new SolidColorBrush(Color.FromRgb(46, 254, 46));
+                    RectText.Fill = new SolidColorBrush(Color.FromRgb(46, 254, 46));
                 }
                 else
                 {
-                    if (flagBackspase)
+                    if (flagBackspase && !backClick)
                     {
                         fails++;
                     }
-                    lineUser.Background = new SolidColorBrush(Colors.Red);
-                    RectText.Fill = new SolidColorBrush(Colors.Red);
+                    lineUser.Background = new SolidColorBrush(Color.FromRgb(254, 46, 46));
+                    RectText.Fill = new SolidColorBrush(Color.FromRgb(254, 46, 46));
                     Fails.Content = fails;
                 }
-                if (lineUser.Text.Length == linePrograms.Text.Length)
+                if (lineUser.Text.Length == linePrograms.Text.Length && lineUser.Text == linePrograms.Text)
                 {
                     timer.Stop();
                     Speed();
@@ -285,7 +290,7 @@ namespace KSGGKTTiD
         }
         void Speed()
         {
-            SpeedChar.Content = Math.Round(((double)lineUser.Text.Length / tempTimer) * 60).ToString();
+            SpeedChar.Content = Math.Round(((double)lineUser.Text.Length / tempTimer) * 60).ToString() + " с/м";
         }
         private void Start_Click(object sender, RoutedEventArgs e)
         {
@@ -294,7 +299,36 @@ namespace KSGGKTTiD
             linePrograms.Text = "Вадим Шкуратов Молодец, политик лидер и боец!";
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
+            lineUser.Text = string.Empty;
             lineUser.Focus();
+            
+        }
+
+        bool StateClosed = true;
+        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (StateClosed)
+            {
+                Storyboard sb = this.FindResource("OpenMenu") as Storyboard;
+                sb.Begin();
+            }
+            else
+            {
+                Storyboard sb = this.FindResource("CloseMenu") as Storyboard;
+                sb.Begin();
+            }
+
+            StateClosed = !StateClosed;
+        }
+
+        private void Stop_Click(object sender, RoutedEventArgs e)
+        {
+            timer.Stop();
+            linePrograms.Text = "Вадим Шкуратов Молодец, политик лидер и боец!";
+            lineUser.IsReadOnly = true;
+            lineUser.IsEnabled = false;
+            Fails.Content = 0.ToString();
+            SpeedChar.Content = 0.ToString();
         }
     }
 }

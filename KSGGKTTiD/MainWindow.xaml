@@ -7,11 +7,13 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
         KeyDown="Window_KeyDown"
-        PreviewKeyUp="Window_PreviewKeyUp"
-        Title="KeyFriend @tvoy_prostoy_malchik" Background="White" Height="700" Width="1100" MinHeight="550" MinWidth="1100" MaxHeight="700" WindowStartupLocation="CenterScreen">
+        WindowStyle="None"
+        Icon="icon.ico"
+        PreviewKeyUp="Window_PreviewKeyUp" Background="White" Height="700" Width="1100" MinHeight="550" MinWidth="1100"  WindowStartupLocation="CenterScreen">
  
     <Grid x:Name="Grid" Background="WhiteSmoke">
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="60"/>
@@ -21,13 +23,65 @@
             <RowDefinition Height="65"/>
             <RowDefinition Height="65"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Background="#FF340051">
+        <Grid x:Name="GridTitleBar" Background="#FF8522BD" MouseDown="GridTitleBar_MouseDown" MouseLeftButtonUp="GridTitleBar_MouseLeftButtonDown">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6 2 2 2">
+                <materialDesign:PackIcon Kind="Keyboard" Foreground="White" Height="25" Width="25" Margin="6 0"></materialDesign:PackIcon>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="KeyFriends inst: @tvoy_prostoy_malchik" Foreground="White" FontSize="17" FontFamily="Bahnschrift">
+                    <TextBlock.Effect>
+                        <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                <Button x:Name="WindowMinimized" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="WindowMinimized_Click">
+                    <materialDesign:PackIcon Kind="WindowMinimize"/>
+                    <Button.Effect>
+                        <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                    </Button.Effect>
+                </Button>
+                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="WindowMaxNormal_Click">
+                    <materialDesign:PackIcon x:Name="WindowMaxNormal" Kind="WindowRestore"/>
+                    <Button.Effect>
+                        <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                    </Button.Effect>
+                </Button>
+                <Button x:Name="ButtonFechar" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonFechar_Click">
+                    <materialDesign:PackIcon Kind="Power"/>
+                    <Button.Effect>
+                        <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                    </Button.Effect>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Background="#FF340051">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Bahnshrift" Text="Добро пожаловать, KeyFriend! Приложение полностью бесплатное! Но можете поддержать, меня, подпиской на инстарам (ссылка в шапке программы)!" TextAlignment="Center" VerticalAlignment="Center"  FontSize="25" HorizontalAlignment="Center">
+                <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Bahnshrift" Text="Привет Бро! Добро пожаловать, в мою приложуху! Оно полностью бесплатное! Без рекламы, регистрации и СМС! PS. Не работает? Вызывай фиксика - Вадю, и подпишись на инсту(ссылка вверху)!" TextAlignment="Center" VerticalAlignment="Center"  FontSize="22" HorizontalAlignment="Center">
                     <TextBlock.Effect>
                         <DropShadowEffect BlurRadius="5" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
 
@@ -38,7 +92,7 @@
         </Grid>
 
         
-        <Grid Grid.Row="1" Background="#FFA46FE4">
+        <Grid Grid.Row="2" Background="#FFA46FE4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -59,7 +113,7 @@
             <TextBox x:Name="lineUser" Grid.Column="1" TextWrapping="Wrap" Background="White" FontFamily="Bahnschrift" HorizontalContentAlignment="Left" Cursor="Hand"  FontSize="20" VerticalContentAlignment="Top" BorderThickness="0"  TextChanged="lineUser_TextChanged" IsEnabled="False" Margin="20"/>
 
         </Grid>
-        <Grid Grid.Row="2" Background="#FF996AB4" >
+        <Grid Grid.Row="3" Background="#FF996AB4" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -90,7 +144,7 @@
                 </StackPanel>
             </Grid>
         </Grid>
-        <Grid x:Name="HeaderGrid" Grid.Row="3">
+        <Grid x:Name="HeaderGrid" Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="70"/>
                 <ColumnDefinition/>
@@ -132,7 +186,7 @@
                 <!-- <materialDesign:PackIcon Kind="ArrowLeft"/> !-->
             </Button>
         </Grid>
-        <Grid x:Name="PreHeaderGrid" Grid.Row="4">
+        <Grid x:Name="PreHeaderGrid" Grid.Row="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="90"/>
                 <ColumnDefinition/>
@@ -172,7 +226,7 @@
             <Button Grid.Column="12" Name="Oem6" Content="]" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
             <Button Grid.Column="13" Name="Oem5" Content="\" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
         </Grid>
-        <Grid x:Name="CenterGrid" Grid.Row="5">
+        <Grid x:Name="CenterGrid" Grid.Row="6">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="130"/>
                 <ColumnDefinition/>
@@ -211,7 +265,7 @@
             <Button Grid.Column="12" Name="Return" Content="Enter" Height="75" Margin="2" Background="Gray" FontSize="20"/>
 
         </Grid>
-        <Grid x:Name="PreLowerGrid" Grid.Row="6" >
+        <Grid x:Name="PreLowerGrid" Grid.Row="7" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="160"/>
                 <ColumnDefinition/>
@@ -248,7 +302,7 @@
             <Button Grid.Column="11" Name="RightShift" Content="Shift" Height="75" Margin="2" Background="Gray" FontSize="20"/>
 
         </Grid>
-        <Grid x:Name="LowerGrid" Grid.Row="7">
+        <Grid x:Name="LowerGrid" Grid.Row="8">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

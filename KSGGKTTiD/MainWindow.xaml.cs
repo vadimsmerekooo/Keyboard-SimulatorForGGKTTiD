@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
@@ -121,6 +122,78 @@ namespace KSGGKTTiD
             this.OemPeriod.Content = ".";
             this.OemQuestion.Content = "/";
         }
+        private void LoverRusLetters()
+        {
+            this.Q.Content = "й";
+            this.W.Content = "ц";
+            this.E.Content = "у";
+            this.R.Content = "к";
+            this.T.Content = "е";
+            this.Y.Content = "н";
+            this.U.Content = "г";
+            this.I.Content = "ш";
+            this.O.Content = "щ";
+            this.P.Content = "з";
+            this.OemOpenBrackets.Content = "х";
+            this.Oem6.Content = "ъ";
+            this.A.Content = "ф";
+            this.S.Content = "ы";
+            this.D.Content = "в";
+            this.F.Content = "а";
+            this.G.Content = "п";
+            this.H.Content = "р";
+            this.J.Content = "о";
+            this.K.Content = "л";
+            this.L.Content = "д";
+            this.Oem1.Content = "ж";
+            this.OemQuotes.Content = "э";
+            this.Z.Content = "я";
+            this.X.Content = "ч";
+            this.C.Content = "с";
+            this.V.Content = "м";
+            this.B.Content = "и";
+            this.N.Content = "т";
+            this.M.Content = "ь";
+            this.OemComma.Content = "б";
+            this.OemPeriod.Content = "ю";
+            this.OemQuestion.Content = ".";
+        }
+        private void CapitalRusLetters()
+        {
+            this.Q.Content = "Й";
+            this.W.Content = "Ц";
+            this.E.Content = "У";
+            this.R.Content = "К";
+            this.T.Content = "Е";
+            this.Y.Content = "Н";
+            this.U.Content = "Г";
+            this.I.Content = "Ш";
+            this.O.Content = "Щ";
+            this.P.Content = "З";
+            this.OemOpenBrackets.Content = "Х";
+            this.Oem6.Content = "Ъ";
+            this.A.Content = "Ф";
+            this.S.Content = "Ы";
+            this.D.Content = "В";
+            this.F.Content = "А";
+            this.G.Content = "П";
+            this.H.Content = "Р";
+            this.J.Content = "О";
+            this.K.Content = "Л";
+            this.L.Content = "Д";
+            this.Oem1.Content = "Ж";
+            this.OemQuotes.Content = "Э";
+            this.Z.Content = "Я";
+            this.X.Content = "Ч";
+            this.C.Content = "С";
+            this.V.Content = "М";
+            this.B.Content = "И";
+            this.N.Content = "Т";
+            this.M.Content = "Ь";
+            this.OemComma.Content = "Б";
+            this.OemPeriod.Content = "Ю";
+            this.OemQuestion.Content = ",";
+        }
 
         Random rendChar = new Random();
         bool flagCapsLock = true;
@@ -135,6 +208,7 @@ namespace KSGGKTTiD
             timer.Tick += Timer_Tick;
             timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
             Combobox.ItemsSource = new string[] {"Легкий", "Средний", "Тяжелый", "Супер-тяжелый" };
+            LoverRusLetters();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -159,26 +233,26 @@ namespace KSGGKTTiD
                                 (item as Button).Opacity = 0.5;
                                 if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
                                 {
-                                    CapitalSymbol();
+                                    
                                     if (flagCapsLock)
                                     {
-                                        CapitalLetters();
+                                        CapitalRusLetters();
                                     }
                                     else
                                     {
-                                        LoverLetters();
+                                        LoverRusLetters();
                                     }
                                 }
                                 else if (e.Key.ToString() == "Capital")
                                 {
                                     if (flagCapsLock)
                                     {
-                                        CapitalLetters();
+                                        CapitalRusLetters();
                                         flagCapsLock = false;
                                     }
                                     else
                                     {
-                                        LoverLetters();
+                                        LoverRusLetters();
                                         flagCapsLock = true;
                                     }
                                 }
@@ -219,14 +293,13 @@ namespace KSGGKTTiD
                                 (item as Button).Opacity = 1;
                                 if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
                                 {
-                                    LoverSymbol();
                                     if (!flagCapsLock)
                                     {
-                                        CapitalLetters();
+                                        CapitalRusLetters();
                                     }
                                     else
                                     {
-                                        LoverLetters();
+                                        LoverRusLetters();
                                     }
                                 }
                             }
@@ -275,36 +348,43 @@ namespace KSGGKTTiD
         }
         private string RandomText(string slojn)
         {
-        string[] text = null;
-            if(slojn == "легкий")
+            try
             {
-                using(StreamReader sr = new StreamReader(@"../../Resource/Text/eazy.txt"))
+                string[] text = null;
+                if (slojn == "легкий")
                 {
-                    text = File.ReadAllLines(@"../../Resource/Text/eazy.txt");
+                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/eazy.txt"))
+                    {
+                        text = File.ReadAllLines(@"../../Resource/Text/eazy.txt");
+                    }
                 }
+                else if (slojn == "средний")
+                {
+                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/midle.txt"))
+                    {
+                        text = File.ReadAllLines(@"../../Resource/Text/midle.txt");
+                    }
+                }
+                else if (slojn == "тяжелый")
+                {
+                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/hard.txt"))
+                    {
+                        text = File.ReadAllLines(@"../../Resource/Text/hard.txt");
+                    }
+                }
+                else if (slojn == "супер-тяжелый")
+                {
+                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/super-hard.txt"))
+                    {
+                        text = File.ReadAllLines(@"../../Resource/Text/super-hard.txt");
+                    }
+                }
+                return text[rendChar.Next(0, text.Length - 1)];
             }
-            else if(slojn == "средний")
+            catch
             {
-                using (StreamReader sr = new StreamReader(@"../../Resource/Text/midle.txt"))
-                {
-                    text = File.ReadAllLines(@"../../Resource/Text/midle.txt");
-                }
+                return "Че-то с файлами беда! Вызови фиксика Вадю. Он все починит))))";
             }
-            else if(slojn == "тяжелый")
-            {
-                using (StreamReader sr = new StreamReader(@"../../Resource/Text/hard.txt"))
-                {
-                    text = File.ReadAllLines(@"../../Resource/Text/hard.txt");
-                }
-            }
-            else if(slojn == "супер-тяжелый")
-            {
-                using (StreamReader sr = new StreamReader(@"../../Resource/Text/super-hard.txt"))
-                {
-                    text = File.ReadAllLines(@"../../Resource/Text/super-hard.txt");
-                }
-            }
-            return text[rendChar.Next(0, text.Length -1)];
         }
         void Speed()
         {
@@ -314,7 +394,7 @@ namespace KSGGKTTiD
         {
             tempTimer = 0;
             timer.Start();
-            linePrograms.Text = RandomText(Combobox.SelectedValue.ToString().ToLower());
+            linePrograms.Text = RandomText(Combobox.SelectedValue.ToString().ToLower().Trim());
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
             lineUser.Text = string.Empty;
@@ -359,6 +439,35 @@ namespace KSGGKTTiD
             Fails.Content = 0.ToString();
             SpeedChar.Content = 0.ToString();
             lineUser.Focus();
+        }
+        private void WindowMinimized_Click(object sender, RoutedEventArgs e) { this.WindowState = WindowState.Minimized; }
+        private void ButtonFechar_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        private void WindowMaxNormal_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.WindowState = WindowState.Normal;
+                WindowMaxNormal.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowMaximize;
+            }
+            else
+            {
+                this.WindowState = WindowState.Maximized;
+                WindowMaxNormal.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
+            }
+        }
+
+        private void GridTitleBar_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
+
+        private void GridTitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                this.WindowState = WindowState.Normal;
         }
     }
 }

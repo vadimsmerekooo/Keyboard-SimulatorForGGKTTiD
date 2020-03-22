@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KSGGKTTiD", "KSGGKTTiD\KSGGKTTiD.csproj", "{FFC3703F-1229-4D02-9D46-7B49B6A0C8BC}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupKSGGKTTiD", "SetupKSGGKTTiD\SetupKSGGKTTiD.vdproj", "{DCF3AAB3-B130-4AC4-ADA1-A850E4169A9B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{FFC3703F-1229-4D02-9D46-7B49B6A0C8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFC3703F-1229-4D02-9D46-7B49B6A0C8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFC3703F-1229-4D02-9D46-7B49B6A0C8BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF3AAB3-B130-4AC4-ADA1-A850E4169A9B}.Debug|Any CPU.ActiveCfg = Debug
+		{DCF3AAB3-B130-4AC4-ADA1-A850E4169A9B}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

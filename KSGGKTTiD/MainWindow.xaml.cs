@@ -353,30 +353,30 @@ namespace KSGGKTTiD
                 string[] text = null;
                 if (slojn == "легкий")
                 {
-                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/eazy.txt"))
+                    using (StreamReader sr = new StreamReader("eazy.txt"))
                     {
-                        text = File.ReadAllLines(@"../../Resource/Text/eazy.txt");
+                        text = File.ReadAllLines("eazy.txt");
                     }
                 }
                 else if (slojn == "средний")
                 {
-                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/midle.txt"))
+                    using (StreamReader sr = new StreamReader(@"midle.txt"))
                     {
-                        text = File.ReadAllLines(@"../../Resource/Text/midle.txt");
+                        text = File.ReadAllLines("midle.txt");
                     }
                 }
                 else if (slojn == "тяжелый")
                 {
-                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/hard.txt"))
+                    using (StreamReader sr = new StreamReader("hard.txt"))
                     {
-                        text = File.ReadAllLines(@"../../Resource/Text/hard.txt");
+                        text = File.ReadAllLines("hard.txt");
                     }
                 }
                 else if (slojn == "супер-тяжелый")
                 {
-                    using (StreamReader sr = new StreamReader(@"../../Resource/Text/super-hard.txt"))
+                    using (StreamReader sr = new StreamReader("super-hard.txt"))
                     {
-                        text = File.ReadAllLines(@"../../Resource/Text/super-hard.txt");
+                        text = File.ReadAllLines("super-hard.txt");
                     }
                 }
                 return text[rendChar.Next(0, text.Length - 1)];

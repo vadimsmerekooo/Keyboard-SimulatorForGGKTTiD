@@ -203,111 +203,138 @@ namespace KSGGKTTiD
         DispatcherTimer timer = null;
         public MainWindow()
         {
-            InitializeComponent();
-            timer = new DispatcherTimer();
-            timer.Tick += Timer_Tick;
-            timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
-            Combobox.ItemsSource = new string[] {"Легкий", "Средний", "Тяжелый", "Супер-тяжелый" };
-            LoverRusLetters();
+            try
+            {
+                InitializeComponent();
+                timer = new DispatcherTimer();
+                timer.Tick += Timer_Tick;
+                timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
+                Combobox.ItemsSource = new string[] { "Легкий", "Средний", "Тяжелый", "Супер-тяжелый" };
+                LoverRusLetters();
+            }
+            catch
+            {
+
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            tempTimer++;
-            Speed();
+            try
+            {
+                tempTimer++;
+                Speed();
+            }
+            catch
+            {
+
+            }
         }
 
         private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-
-            foreach (UIElement it in (this.Content as Grid).Children)
+            try
             {
-                if (it is Grid)
+                foreach (UIElement it in (this.Content as Grid).Children)
                 {
-                    foreach (var item in (it as Grid).Children)
+                    if (it is Grid)
                     {
-                        if (item is Button)
+                        foreach (var item in (it as Grid).Children)
                         {
-                            if ((item as Button).Name == e.Key.ToString())
+                            if (item is Button)
                             {
-                                (item as Button).Opacity = 0.5;
-                                if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
+                                if ((item as Button).Name == e.Key.ToString())
                                 {
-                                    
-                                    if (flagCapsLock)
+                                    (item as Button).Opacity = 0.5;
+                                    if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
                                     {
-                                        CapitalRusLetters();
+
+                                        if (flagCapsLock)
+                                        {
+                                            CapitalRusLetters();
+                                        }
+                                        else
+                                        {
+                                            LoverRusLetters();
+                                        }
+                                    }
+                                    else if (e.Key.ToString() == "Capital")
+                                    {
+                                        if (flagCapsLock)
+                                        {
+                                            CapitalRusLetters();
+                                            flagCapsLock = false;
+                                        }
+                                        else
+                                        {
+                                            LoverRusLetters();
+                                            flagCapsLock = true;
+                                        }
+                                    }
+                                    else if (e.Key.ToString() == "Back")
+                                    {
+                                        flagBackspase = false;
+                                        backClick = true;
                                     }
                                     else
                                     {
-                                        LoverRusLetters();
+                                        backClick = false;
+                                        flagBackspase = true;
                                     }
-                                }
-                                else if (e.Key.ToString() == "Capital")
-                                {
-                                    if (flagCapsLock)
-                                    {
-                                        CapitalRusLetters();
-                                        flagCapsLock = false;
-                                    }
-                                    else
-                                    {
-                                        LoverRusLetters();
-                                        flagCapsLock = true;
-                                    }
-                                }
-                                else if (e.Key.ToString() == "Back")
-                                {
-                                    flagBackspase = false;
-                                    backClick = true;
-                                }
-                                else
-                                {
-                                    backClick = false;
-                                    flagBackspase = true;
                                 }
                             }
                         }
                     }
                 }
+            }
+            catch
+            {
+
             }
         }
 
         private void Window_PreviewKeyUp(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            if (lineUser.IsEnabled)
+            try
             {
-                lineUser.Focus();
-            }
-
-            foreach (UIElement it in (this.Content as Grid).Children)
-            {
-                if (it is Grid)
+                if (lineUser.IsEnabled)
                 {
-                    foreach (var item in (it as Grid).Children)
+                    lineUser.Focus();
+                }
+
+                foreach (UIElement it in (this.Content as Grid).Children)
+                {
+                    if (it is Grid)
                     {
-                        if (item is Button)
+                        foreach (var item in (it as Grid).Children)
                         {
-                             if ((item as Button).Name == e.Key.ToString())
+                            if (item is Button)
                             {
-                                (item as Button).Opacity = 1;
-                                if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
+                                if ((item as Button).Name == e.Key.ToString())
                                 {
-                                    if (!flagCapsLock)
+                                    (item as Button).Opacity = 1;
+                                    if (e.Key.ToString() == "LeftShift" || e.Key.ToString() == "RightShift")
                                     {
-                                        CapitalRusLetters();
-                                    }
-                                    else
-                                    {
-                                        LoverRusLetters();
+                                        if (!flagCapsLock)
+                                        {
+                                            CapitalRusLetters();
+                                        }
+                                        else
+                                        {
+                                            LoverRusLetters();
+                                        }
                                     }
                                 }
                             }
                         }
                     }
                 }
+                if (!mesStop)
+                {
+                    mesStop = true;
+                }
             }
-            if (!mesStop)
+            catch
             {
 
             }
@@ -315,35 +342,42 @@ namespace KSGGKTTiD
 
         private void lineUser_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (lineUser.IsEnabled)
+            try
             {
-                string str = linePrograms.Text.Substring(0, lineUser.Text.Length);
-                if (lineUser.Text.Equals(str))
+                if (lineUser.IsEnabled)
                 {
-                    if (flagBackspase )
+                    string str = linePrograms.Text.Substring(0, lineUser.Text.Length);
+                    if (lineUser.Text.Equals(str))
                     {
+                        if (flagBackspase)
+                        {
+                            Speed();
+                        }
+                        lineUser.Background = new SolidColorBrush(Color.FromRgb(46, 254, 46));
+                        RectText.Fill = new SolidColorBrush(Color.FromRgb(46, 254, 46));
+                    }
+                    else
+                    {
+                        if (flagBackspase && !backClick)
+                        {
+                            fails++;
+                        }
+                        lineUser.Background = new SolidColorBrush(Color.FromRgb(254, 46, 46));
+                        RectText.Fill = new SolidColorBrush(Color.FromRgb(254, 46, 46));
+                        Fails.Content = fails;
+                    }
+                    if (lineUser.Text.Length == linePrograms.Text.Length && lineUser.Text == linePrograms.Text)
+                    {
+                        timer.Stop();
                         Speed();
+                        lineUser.IsReadOnly = true;
+                        mesStop = false;
                     }
-                    lineUser.Background = new SolidColorBrush(Color.FromRgb(46, 254, 46));
-                    RectText.Fill = new SolidColorBrush(Color.FromRgb(46, 254, 46));
                 }
-                else
-                {
-                    if (flagBackspase && !backClick)
-                    {
-                        fails++;
-                    }
-                    lineUser.Background = new SolidColorBrush(Color.FromRgb(254, 46, 46));
-                    RectText.Fill = new SolidColorBrush(Color.FromRgb(254, 46, 46));
-                    Fails.Content = fails;
-                }
-                if (lineUser.Text.Length == linePrograms.Text.Length && lineUser.Text == linePrograms.Text)
-                {
-                    timer.Stop();
-                    Speed();
-                    lineUser.IsReadOnly = true;
-                    mesStop = false;
-                }
+            }
+            catch
+            {
+
             }
         }
         private string RandomText(string slojn)
@@ -424,6 +458,7 @@ namespace KSGGKTTiD
             timer.Stop();
             lineUser.IsReadOnly = true;
             lineUser.IsEnabled = false;
+            fails = 0;
             Fails.Content = 0.ToString();
             SpeedChar.Content = 0.ToString();
         }
@@ -437,6 +472,7 @@ namespace KSGGKTTiD
             lineUser.IsEnabled = true;
             lineUser.Text = string.Empty;
             Fails.Content = 0.ToString();
+            fails = 0;
             SpeedChar.Content = 0.ToString();
             lineUser.Focus();
         }

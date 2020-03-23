@@ -6,7 +6,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Threading;
-
 namespace KSGGKTTiD
 {
     public partial class MainWindow : Window
@@ -194,7 +193,8 @@ namespace KSGGKTTiD
             this.OemPeriod.Content = "Ю";
             this.OemQuestion.Content = ",";
         }
-
+        
+        
         Random rendChar = new Random();
         bool flagCapsLock = true;
         bool flagBackspase = true;
@@ -209,15 +209,19 @@ namespace KSGGKTTiD
                 timer = new DispatcherTimer();
                 timer.Tick += Timer_Tick;
                 timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
-                Combobox.ItemsSource = new string[] { "Легкий", "Средний", "Тяжелый", "Супер-тяжелый" };
+                Level.Content = "Текст";
+                LevelCB.ItemsSource = new string[] { "Быквы", "Разные буквы", "Слитные буквы", "Словосочетания", "Набор слов", "Текст" };
+                Complexity.Content = "Легкий";
+                ComplexityCB.ItemsSource = new string[] {"Легкий", "Средний", "Сложный", "Супер-сложный" }; 
                 LoverRusLetters();
+
             }
             catch
             {
 
             }
         }
-
+        
         private void Timer_Tick(object sender, EventArgs e)
         {
             try
@@ -427,8 +431,10 @@ namespace KSGGKTTiD
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             tempTimer = 0;
+            fails = 0;
+            Fails.Content = 0.ToString();
             timer.Start();
-            linePrograms.Text = RandomText(Combobox.SelectedValue.ToString().ToLower().Trim());
+            linePrograms.Text = RandomText(Complexity.Content.ToString().ToLower().Trim());
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
             lineUser.Text = string.Empty;
@@ -436,38 +442,18 @@ namespace KSGGKTTiD
             
         }
 
-        bool StateClosed = true;
-        private void ButtonMenu_Click(object sender, RoutedEventArgs e)
-        {
-            if (StateClosed)
-            {
-                Storyboard sb = this.FindResource("OpenMenu") as Storyboard;
-                sb.Begin();
-            }
-            else
-            {
-                Storyboard sb = this.FindResource("CloseMenu") as Storyboard;
-                sb.Begin();
-            }
-
-            StateClosed = !StateClosed;
-        }
-
         private void Stop_Click(object sender, RoutedEventArgs e)
         {
             timer.Stop();
             lineUser.IsReadOnly = true;
             lineUser.IsEnabled = false;
-            fails = 0;
-            Fails.Content = 0.ToString();
-            SpeedChar.Content = 0.ToString();
         }
-
+        //Restart text
         private void PackIcon_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             tempTimer = 0;
             timer.Start();
-            linePrograms.Text = RandomText(Combobox.SelectedValue.ToString().ToLower());
+            linePrograms.Text = RandomText(Complexity.Content.ToString().ToLower());
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
             lineUser.Text = string.Empty;
@@ -476,6 +462,7 @@ namespace KSGGKTTiD
             SpeedChar.Content = 0.ToString();
             lineUser.Focus();
         }
+        //Events for title bar
         private void WindowMinimized_Click(object sender, RoutedEventArgs e) { this.WindowState = WindowState.Minimized; }
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
         {
@@ -494,16 +481,21 @@ namespace KSGGKTTiD
                 WindowMaxNormal.Kind = MaterialDesignThemes.Wpf.PackIconKind.WindowRestore;
             }
         }
-
         private void GridTitleBar_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
         private void GridTitleBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (this.WindowState == WindowState.Maximized)
                 this.WindowState = WindowState.Normal;
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
+            sb.Begin();
+        }
+
     }
 }

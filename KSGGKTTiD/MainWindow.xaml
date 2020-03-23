@@ -10,323 +10,370 @@
         WindowStyle="None"
         Icon="icon.ico"
         PreviewKeyUp="Window_PreviewKeyUp" Background="White" Height="700" Width="1100" MinHeight="550" MinWidth="1100"  WindowStartupLocation="CenterScreen">
- 
-    <Grid x:Name="Grid" Background="WhiteSmoke">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="60"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-            <RowDefinition Height="65"/>
-        </Grid.RowDefinitions>
-        <Grid x:Name="GridTitleBar" Background="#FF8522BD" MouseDown="GridTitleBar_MouseDown" MouseLeftButtonUp="GridTitleBar_MouseLeftButtonDown">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6 2 2 2">
-                <materialDesign:PackIcon Kind="Keyboard" Foreground="White" Height="25" Width="25" Margin="6 0"></materialDesign:PackIcon>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="KeyFriends inst: @tvoy_prostoy_malchik" Foreground="White" FontSize="17" FontFamily="Bahnschrift">
-                    <TextBlock.Effect>
-                        <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-                    </TextBlock.Effect>
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
-                <Button x:Name="WindowMinimized" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="WindowMinimized_Click">
-                    <materialDesign:PackIcon Kind="WindowMinimize"/>
-                    <Button.Effect>
-                        <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-                    </Button.Effect>
-                </Button>
-                <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="WindowMaxNormal_Click">
-                    <materialDesign:PackIcon x:Name="WindowMaxNormal" Kind="WindowRestore"/>
-                    <Button.Effect>
-                        <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-                    </Button.Effect>
-                </Button>
-                <Button x:Name="ButtonFechar" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonFechar_Click">
-                    <materialDesign:PackIcon Kind="Power"/>
-                    <Button.Effect>
-                        <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-                    </Button.Effect>
-                </Button>
-            </StackPanel>
-        </Grid>
-        <Grid Grid.Row="1" Background="#FF340051">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Bahnshrift" Text="Привет Бро! Добро пожаловать, в мою приложуху! Оно полностью бесплатное! Без рекламы, регистрации и СМС! PS. Не работает? Вызывай фиксика - Вадю, и подпишись на инсту(ссылка вверху)!" TextAlignment="Center" VerticalAlignment="Center"  FontSize="22" HorizontalAlignment="Center">
-                    <TextBlock.Effect>
-                        <DropShadowEffect BlurRadius="5" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
-
-                    </TextBlock.Effect>
-                </TextBlock>
-
-            </StackPanel>
-        </Grid>
-
-        
-        <Grid Grid.Row="2" Background="#FFA46FE4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Rectangle Margin="10"  RadiusY="10" RadiusX="10" Fill="#FF3C5BE4" >
-                <Rectangle.Effect>
-                    <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
-                </Rectangle.Effect>
-            </Rectangle>
-
-            <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  Name="linePrograms" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Opacity="1" Background="#FF3C5BE4" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
-            <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  IsEnabled="False" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Opacity="1" Background="Transparent" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
-            <Rectangle Name="RectText" Grid.Column="1" Margin="10" Fill="White" RadiusY="10" RadiusX="10" >
-                <Rectangle.Effect>
-                    <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
-                </Rectangle.Effect>
-            </Rectangle>
-            <TextBox x:Name="lineUser" Grid.Column="1" TextWrapping="Wrap" Background="White" FontFamily="Bahnschrift" HorizontalContentAlignment="Left" Cursor="Hand"  FontSize="20" VerticalContentAlignment="Top" BorderThickness="0"  TextChanged="lineUser_TextChanged" IsEnabled="False" Margin="20"/>
-
-        </Grid>
-        <Grid Grid.Row="3" Background="#FF996AB4" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Label Foreground="White" FontFamily="Bahnshrift" FontSize="25" Content="Сложность:" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="80 0"/>
-            <ComboBox x:Name="Combobox" HorizontalContentAlignment="Center" Foreground="White" FontFamily="Bahnshrift" FontSize="20" Grid.Column="0" Width="300" HorizontalAlignment="Right" Margin="10" Height="40" SelectedIndex="0"/>
-            <Grid Grid.Column="1">
+    <Window.Resources>
+        <Storyboard x:Key="OpenComboBox">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="StackPanelCom">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <materialDesign:DialogHost>
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Width="300" Height="250" Background="White" HorizontalAlignment="Center">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="340" />
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button  Content="Старт" Grid.Column="0" FontSize="20" Name="Start" HorizontalAlignment="Left" Width="150" Margin="10 0 0 0" Height="45" Click="Start_Click"></Button>
-                <Button HorizontalAlignment="Right" Grid.Column="0" FontSize="20" Name="Stop" Content="Стоп" Width="120" Height="45" Margin="0 0 45 0" Click="Stop_Click"/>
-                <materialDesign:PackIcon Kind="Restart" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" ToolTip="Изменить текст!" MouseDown="PackIcon_MouseDown"/>
+                <materialDesign:PackIcon Grid.Column="1" Kind="Settings" HorizontalAlignment="Center" Margin="0 15" Foreground="#FF8522BD" Width="50" Height="50"/>
+                <TextBlock Grid.Column="1" Text="Уровень" Foreground="#FF8522BD" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="34,70,75,164" Width="91"/>
+                <ComboBox x:Name="LevelCB"  Grid.Column="1" Foreground="#FF8522BD" SelectionChanged="ComboBox_SelectionChanged" Margin="34,91,34,131"/>
+                <StackPanel x:Name="StackPanelCom"  Opacity="0"  Grid.Column="1" VerticalAlignment="Center" Orientation="Vertical" Margin="34,133,34,68" Height="49">
+                    <TextBlock  x:Name="Select" Text="Сложность" Foreground="#FF8522BD"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                    <ComboBox x:Name="ComplexityCB" Foreground="#FF8522BD" VerticalAlignment="Bottom" Margin="0 5"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Margin="15">
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#FF8522BD"  VerticalAlignment="Center">
+                        Ок
+                    </Button>
+                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#FF8522BD"  VerticalAlignment="Center">
+                        Отмена
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+        <Grid x:Name="Grid" Background="WhiteSmoke">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="65"/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="GridTitleBar" Background="#FF8522BD" MouseDown="GridTitleBar_MouseDown" MouseLeftButtonUp="GridTitleBar_MouseLeftButtonDown">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="6 2 2 2">
+                    <materialDesign:PackIcon Kind="Keyboard" Foreground="White" Height="25" Width="25" Margin="6 0"></materialDesign:PackIcon>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="KeyFriends inst: @tvoy_prostoy_malchik" Foreground="White" FontSize="17" FontFamily="Bahnschrift">
+                        <TextBlock.Effect>
+                            <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                    <Button x:Name="WindowMinimized" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="WindowMinimized_Click">
+                        <materialDesign:PackIcon Kind="WindowMinimize"/>
+                        <Button.Effect>
+                            <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button  Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="WindowMaxNormal_Click">
+                        <materialDesign:PackIcon x:Name="WindowMaxNormal" Kind="WindowRestore"/>
+                        <Button.Effect>
+                            <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                        </Button.Effect>
+                    </Button>
+                    <Button x:Name="ButtonFechar" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Click="ButtonFechar_Click">
+                        <materialDesign:PackIcon Kind="Power"/>
+                        <Button.Effect>
+                            <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                        </Button.Effect>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Background="#FF340051">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                    <TextBlock Foreground="White" TextWrapping="Wrap" FontFamily="Bahnshrift" Text="Привет Бро! Добро пожаловать, в мою приложуху! Оно полностью бесплатное! Без рекламы, регистрации и СМС! PS. Не работает? Вызывай фиксика - Вадю, и подпишись на инсту(ссылка вверху)!" TextAlignment="Center" VerticalAlignment="Center"  FontSize="22" HorizontalAlignment="Center">
+                        <TextBlock.Effect>
+                            <DropShadowEffect BlurRadius="5" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
 
-                <Rectangle Grid.Column="1" Fill="#FF340051" Margin="2" RadiusY="10" RadiusX="10" >
+                        </TextBlock.Effect>
+                    </TextBlock>
+
+                </StackPanel>
+            </Grid>
+
+
+            <Grid Grid.Row="2" Background="#FFA46FE4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Rectangle Margin="10"  RadiusY="10" RadiusX="10" Fill="#FF3C5BE4" >
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Margin="5 -3">
-                    <Label Foreground="White" Content="Ошибок:" FontSize="21" Height="40" Width="104"/>
-                    <Label Foreground="White" Content="0" FontSize="21" Name="Fails" Height="40" FontWeight="Bold" Width="92"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="5 0 0 0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="196" Height="40">
-                    <Label Foreground="White" Content="Скорость:" FontSize="21" Width="104"/>
-                    <Label Foreground="White" FontSize="21" Content="0" x:Name="SpeedChar" FontWeight="Bold" />
-                </StackPanel>
+
+                <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  Name="linePrograms" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Opacity="1" Background="#FF3C5BE4" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
+                <TextBox Grid.Row="0" TextWrapping="Wrap" BorderThickness="0" FontSize="20"  IsReadOnly="True" Foreground="White"  IsEnabled="False" VerticalContentAlignment="Top" HorizontalContentAlignment="Left" Opacity="1" Background="Transparent" BorderBrush="#ADD8E6" FontFamily="Bahnschrift"  Margin="14"></TextBox>
+                <Rectangle Width="6" HorizontalAlignment="Right" Fill="Gray" Opacity="0.6" Margin="-3 0"/>
+                <Rectangle Name="RectText" Grid.Column="1" Margin="10" Fill="White" RadiusY="10" RadiusX="10" >
+                    <Rectangle.Effect>
+                        <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                    </Rectangle.Effect>
+                </Rectangle>
+                <TextBox x:Name="lineUser" Grid.Column="1" TextWrapping="Wrap" Background="White" FontFamily="Bahnschrift" HorizontalContentAlignment="Left" Cursor="Hand"  FontSize="20" VerticalContentAlignment="Top" BorderThickness="0"  TextChanged="lineUser_TextChanged" IsEnabled="False" Margin="20"/>
+
+            </Grid>
+            <Grid Grid.Row="3" Background="#FF996AB4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Уровень" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontSize="21"/>
+                    <Label x:Name="Level" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="Purple" FontSize="21" FontWeight="DemiBold"/>
+
+                    <Label Grid.Column="1" Content="Сложность" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="White" FontSize="21"/>
+                    <Label x:Name="Complexity" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="21" Foreground="Purple" FontWeight="DemiBold"/>
+
+                    <Button Grid.Column="2" VerticalAlignment="Center"  FontSize="20" Height="45" HorizontalAlignment="Center" Content="← Изменить" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"></Button>
+                    <Rectangle Grid.Column="2" Width="6" HorizontalAlignment="Right" Fill="Gray" Opacity="0.6" Margin="-3 0"/>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="340" />
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button  Content="Старт" Grid.Column="0" FontSize="20" Name="Start" HorizontalAlignment="Left" Width="150" Margin="10 0 0 0" Height="45" Click="Start_Click"></Button>
+                    <Button HorizontalAlignment="Right" Grid.Column="0" FontSize="20" Name="Stop" Content="Стоп" Width="120" Height="45" Margin="0 0 45 0" Click="Stop_Click"/>
+                    <materialDesign:PackIcon Kind="Restart" HorizontalAlignment="Right" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" ToolTip="Изменить текст!" MouseDown="PackIcon_MouseDown"/>
+
+                    <Rectangle Grid.Column="1" Fill="#FF340051" Margin="2" RadiusY="10" RadiusX="10" >
+                        <Rectangle.Effect>
+                            <DropShadowEffect BlurRadius="20" Color="#FFDEDEDE" RenderingBias="Quality" ShadowDepth="1"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" Margin="5 -3">
+                        <Label Foreground="White" Content="Ошибок:" FontSize="21" Height="40" Width="104"/>
+                        <Label Foreground="White" Content="0" FontSize="21" Name="Fails" Height="40" FontWeight="Bold" Width="92"/>
+                    </StackPanel>
+                    <StackPanel Grid.Column="1" Margin="5 0 0 0" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="196" Height="40">
+                        <Label Foreground="White" Content="Скорость:" FontSize="21" Width="104"/>
+                        <Label Foreground="White" FontSize="21" Content="0" x:Name="SpeedChar" FontWeight="Bold" />
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <Grid x:Name="HeaderGrid" Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="70"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Effect>
+                    <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                </Grid.Effect>
+                <Button Grid.Column="0" Name="Oem3" Content="`" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="1" Name="D1" Content="1" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="2" Name="D2" Content="2" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="3" Name="D3" Content="3" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="4" Name="D4" Content="4" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="5" Name="D5" Content="5" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="6" Name="D6" Content="6" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="7" Name="D7" Content="7" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="8" Name="D8" Content="8" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="9" Name="D9" Content="9" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="10" Name="D0" Content="0" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="11" Name="OemMinus" Content="-" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="12" Name="OemPlus" Content="=" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="13" Name="Back" Height="75" Margin="2" Background="Gray" FontSize="20">
+                    <!-- <materialDesign:PackIcon Kind="ArrowLeft"/> !-->
+                </Button>
+            </Grid>
+            <Grid x:Name="PreHeaderGrid" Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="90"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Effect>
+                    <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                </Grid.Effect>
+                <Button Grid.Column="0" Content="Tab" Height="75" Margin="2" FontSize="20" Background="Gray"/>
+                <Button Grid.Column="1" Name="Q" Content="q" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="2" Name="W" Content="w" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="3" Name="E" Content="e" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="4" Name="R" Content="r" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="5" Name="T" Content="t" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="6" Name="Y" Content="y" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="7" Name="U" Content="u" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="8" Name="I" Content="i" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="9" Name="O" Content="o" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="10" Name="P" Content="p" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="11" Name="OemOpenBrackets" Content="[" Height="75" Background="#FF7FF077" Margin="2" FontSize="20"/>
+                <Button Grid.Column="12" Name="Oem6" Content="]" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="13" Name="Oem5" Content="\" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+            </Grid>
+            <Grid x:Name="CenterGrid" Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Effect>
+                    <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                </Grid.Effect>
+                <Button Grid.Column="0" Name="Capital" Content="CapsLock" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="1" Name="A" Content="a" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="2" Name="S" Content="s" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="3" Name="D" Content="d" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="4" Name="F" Content="f" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="5" Name="G" Content="g" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="6" Name="H" Content="h" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="7" Name="J" Content="j" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="8" Name="K" Content="k" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="9" Name="L" Content="l" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="10" Name="Oem1" Content=";" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="11" Name="OemQuotes" Content="'" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="12" Name="Return" Content="Enter" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+
+            </Grid>
+            <Grid x:Name="PreLowerGrid" Grid.Row="7" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="160"/>
+                </Grid.ColumnDefinitions>
+                <Grid.Effect>
+                    <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                </Grid.Effect>
+                <Button Grid.Column="0" Name="LeftShift" Content="Shift" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="1" Name="Z" Content="z" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="2" Name="X" Content="x" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="3" Name="C" Content="c" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="4" Name="V" Content="v" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="5" Name="B" Content="b" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
+                <Button Grid.Column="6" Name="N" Content="n" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="7" Name="M" Content="m" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
+                <Button Grid.Column="8" Name="OemComma" Content="," Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
+                <Button Grid.Column="9" Name="OemPeriod" Content="." Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
+                <Button Grid.Column="10" Name="OemQuestion" Content="/" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
+                <Button Grid.Column="11" Name="RightShift" Content="Shift" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+
+            </Grid>
+            <Grid x:Name="LowerGrid" Grid.Row="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="480"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Effect>
+                    <DropShadowEffect
+                      ShadowDepth="4"
+                      Direction="330"
+                      Color="Black"
+                      Opacity="0.5"
+                      BlurRadius="4"/>
+                </Grid.Effect>
+                <Button Grid.Column="0" Name="LeftCtrl" Content="Ctrl" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="1" Name="LWin" Content="Win" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="2" Name="LAlt" Content="Alt" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="3" Name="Space" Content="Space" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="4" Name="RAlt" Content="Alt" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="5" Name="RWin" Content="Win" Height="75" Margin="2" Background="Gray" FontSize="20"/>
+                <Button Grid.Column="6" Name="RightCtrl" Content="Cntrl" Height="75" Margin="2" Background="Gray" FontSize="20"/>
             </Grid>
         </Grid>
-        <Grid x:Name="HeaderGrid" Grid.Row="4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="70"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="70"/>
-            </Grid.ColumnDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-            </Grid.Effect>
-            <Button Grid.Column="0" Name="Oem3" Content="`" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="1" Name="D1" Content="1" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="2" Name="D2" Content="2" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="3" Name="D3" Content="3" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="4" Name="D4" Content="4" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="5" Name="D5" Content="5" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="6" Name="D6" Content="6" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="7" Name="D7" Content="7" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="8" Name="D8" Content="8" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="9" Name="D9" Content="9" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="10" Name="D0" Content="0" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="11" Name="OemMinus" Content="-" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="12" Name="OemPlus" Content="=" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="13" Name="Back" Height="75" Margin="2" Background="Gray" FontSize="20">
-                <!-- <materialDesign:PackIcon Kind="ArrowLeft"/> !-->
-            </Button>
-        </Grid>
-        <Grid x:Name="PreHeaderGrid" Grid.Row="5">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="90"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="90"/>
-            </Grid.ColumnDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-            </Grid.Effect>
-            <Button Grid.Column="0" Content="Tab" Height="75" Margin="2" FontSize="20" Background="Gray"/>
-            <Button Grid.Column="1" Name="Q" Content="q" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="2" Name="W" Content="w" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="3" Name="E" Content="e" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="4" Name="R" Content="r" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="5" Name="T" Content="t" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="6" Name="Y" Content="y" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="7" Name="U" Content="u" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="8" Name="I" Content="i" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="9" Name="O" Content="o" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="10" Name="P" Content="p" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="11" Name="OemOpenBrackets" Content="[" Height="75" Background="#FF7FF077" Margin="2" FontSize="20"/>
-            <Button Grid.Column="12" Name="Oem6" Content="]" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="13" Name="Oem5" Content="\" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-        </Grid>
-        <Grid x:Name="CenterGrid" Grid.Row="6">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="130"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="130"/>
-            </Grid.ColumnDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-            </Grid.Effect>
-            <Button Grid.Column="0" Name="Capital" Content="CapsLock" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="1" Name="A" Content="a" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="2" Name="S" Content="s" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="3" Name="D" Content="d" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="4" Name="F" Content="f" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="5" Name="G" Content="g" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="6" Name="H" Content="h" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="7" Name="J" Content="j" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="8" Name="K" Content="k" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="9" Name="L" Content="l" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="10" Name="Oem1" Content=";" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="11" Name="OemQuotes" Content="'" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="12" Name="Return" Content="Enter" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-
-        </Grid>
-        <Grid x:Name="PreLowerGrid" Grid.Row="7" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="160"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="160"/>
-            </Grid.ColumnDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-            </Grid.Effect>
-            <Button Grid.Column="0" Name="LeftShift" Content="Shift" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="1" Name="Z" Content="z" Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="2" Name="X" Content="x" Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="3" Name="C" Content="c" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="4" Name="V" Content="v" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="5" Name="B" Content="b" Height="75" Margin="2" Background="#FF77BEF0" FontSize="20"/>
-            <Button Grid.Column="6" Name="N" Content="n" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="7" Name="M" Content="m" Height="75" Margin="2" Background="#FFDB77F0" FontSize="20"/>
-            <Button Grid.Column="8" Name="OemComma" Content="," Height="75" Margin="2" Background="#FFF07795" FontSize="20"/>
-            <Button Grid.Column="9" Name="OemPeriod" Content="." Height="75" Margin="2" Background="#FFE6F077" FontSize="20"/>
-            <Button Grid.Column="10" Name="OemQuestion" Content="/" Height="75" Margin="2" Background="#FF7FF077" FontSize="20"/>
-            <Button Grid.Column="11" Name="RightShift" Content="Shift" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-
-        </Grid>
-        <Grid x:Name="LowerGrid" Grid.Row="8">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="480"/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.Effect>
-                <DropShadowEffect
-                      ShadowDepth="4"
-                      Direction="330"
-                      Color="Black"
-                      Opacity="0.5"
-                      BlurRadius="4"/>
-            </Grid.Effect>
-            <Button Grid.Column="0" Name="LeftCtrl" Content="Ctrl" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="1" Name="LWin" Content="Win" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="2" Name="LAlt" Content="Alt" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="3" Name="Space" Content="Space" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="4" Name="RAlt" Content="Alt" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="5" Name="RWin" Content="Win" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-            <Button Grid.Column="6" Name="RightCtrl" Content="Cntrl" Height="75" Margin="2" Background="Gray" FontSize="20"/>
-        </Grid>
-    </Grid>
+    </materialDesign:DialogHost>
 </Window>

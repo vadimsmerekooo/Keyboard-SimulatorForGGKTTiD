@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -193,14 +194,15 @@ namespace KSGGKTTiD
             this.OemPeriod.Content = "Ю";
             this.OemQuestion.Content = ",";
         }
-        
-        
+
+
         Random rendChar = new Random();
         bool flagCapsLock = true;
         bool flagBackspase = true;
         private bool backClick = false;
         bool mesStop = true;
         DispatcherTimer timer = null;
+
         public MainWindow()
         {
             try
@@ -210,9 +212,11 @@ namespace KSGGKTTiD
                 timer.Tick += Timer_Tick;
                 timer.Interval = new TimeSpan(0, 0, 0, 0, 1000);
                 Level.Content = "Текст";
-                LevelCB.ItemsSource = new string[] { "Быквы", "Разные буквы", "Слитные буквы", "Словосочетания", "Набор слов", "Текст" };
+                Levels = "Текст";
+                LevelCB.ItemsSource = new string[] { "Буквы", "Переменные буквы", "Двойные буквы", "Словосочетания", "Набор слов", "Текст" };
                 Complexity.Content = "Легкий";
-                ComplexityCB.ItemsSource = new string[] {"Легкий", "Средний", "Сложный", "Супер-сложный" }; 
+                Prelevels = "Легкий";
+                ComplexityCB.ItemsSource = new string[] { "Легкий", "Средний", "Сложный", "Супер-сложный" };
                 LoverRusLetters();
 
             }
@@ -221,7 +225,7 @@ namespace KSGGKTTiD
 
             }
         }
-        
+
         private void Timer_Tick(object sender, EventArgs e)
         {
             try
@@ -384,62 +388,24 @@ namespace KSGGKTTiD
 
             }
         }
-        private string RandomText(string slojn)
-        {
-            try
-            {
-                string[] text = null;
-                if (slojn == "легкий")
-                {
-                    using (StreamReader sr = new StreamReader("eazy.txt"))
-                    {
-                        text = File.ReadAllLines("eazy.txt");
-                    }
-                }
-                else if (slojn == "средний")
-                {
-                    using (StreamReader sr = new StreamReader(@"midle.txt"))
-                    {
-                        text = File.ReadAllLines("midle.txt");
-                    }
-                }
-                else if (slojn == "тяжелый")
-                {
-                    using (StreamReader sr = new StreamReader("hard.txt"))
-                    {
-                        text = File.ReadAllLines("hard.txt");
-                    }
-                }
-                else if (slojn == "супер-тяжелый")
-                {
-                    using (StreamReader sr = new StreamReader("super-hard.txt"))
-                    {
-                        text = File.ReadAllLines("super-hard.txt");
-                    }
-                }
-                return text[rendChar.Next(0, text.Length - 1)];
-            }
-            catch
-            {
-                return "Че-то с файлами беда! Вызови фиксика Вадю. Он все починит))))";
-            }
-        }
+
         void Speed()
         {
             SpeedChar.Content = Math.Round(((double)lineUser.Text.Length / tempTimer) * 60).ToString() + " с/м";
         }
+
+        //"Быквы", "Переменные буквы", "Двойные буквы", "Словосочетания", "Набор слов", "Текст" 
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             tempTimer = 0;
             fails = 0;
             Fails.Content = 0.ToString();
-            timer.Start();
-            linePrograms.Text = RandomText(Complexity.Content.ToString().ToLower().Trim());
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
+            Raspredelenye();
             lineUser.Text = string.Empty;
             lineUser.Focus();
-            
+
         }
 
         private void Stop_Click(object sender, RoutedEventArgs e)
@@ -452,16 +418,15 @@ namespace KSGGKTTiD
         private void PackIcon_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             tempTimer = 0;
-            timer.Start();
-            linePrograms.Text = RandomText(Complexity.Content.ToString().ToLower());
+            fails = 0;
+            Fails.Content = 0.ToString();
             lineUser.IsReadOnly = false;
             lineUser.IsEnabled = true;
+            Raspredelenye();
             lineUser.Text = string.Empty;
-            Fails.Content = 0.ToString();
-            fails = 0;
-            SpeedChar.Content = 0.ToString();
             lineUser.Focus();
         }
+        #region regionevents
         //Events for title bar
         private void WindowMinimized_Click(object sender, RoutedEventArgs e) { this.WindowState = WindowState.Minimized; }
         private void ButtonFechar_Click(object sender, RoutedEventArgs e)
@@ -490,12 +455,396 @@ namespace KSGGKTTiD
             if (this.WindowState == WindowState.Maximized)
                 this.WindowState = WindowState.Normal;
         }
-
+        #endregion
+        //"Буквы", "Переменные буквы", "Двойные буквы", "Словосочетания", "Набор слов", "Текст" 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
-            sb.Begin();
+            ButtonOk.IsEnabled = false;
+            if (LevelCB.SelectedValue.ToString() == "Текст")
+            {
+                Select.Text = "Сложность";
+                StackPanelCom.Visibility = Visibility.Visible;
+                ComplexityCB.ItemsSource = new string[] { "Легкий", "Средний", "Сложный", "Супер-сложный" };
+                Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
+                sb.Begin();
+            }
+            else if (LevelCB.SelectedValue.ToString() == "Буквы")
+            {
+                Select.Text = "Подуровень";
+                StackPanelCom.Visibility = Visibility.Visible;
+                ComplexityCB.ItemsSource = new string[] { "А - И", "Й - Т", "У - Я", "0 - 9" };
+                Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
+                sb.Begin();
+            }
+            else if (LevelCB.SelectedValue.ToString() == "Переменные буквы")
+            {
+                Select.Text = "Подуровень";
+                StackPanelCom.Visibility = Visibility.Visible;
+                ComplexityCB.ItemsSource = new string[] { "А - И", "Й - Т", "У - Я", "0 - 9" };
+                Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
+                sb.Begin();
+            }
+            else if (LevelCB.SelectedValue.ToString() == "Двойные буквы")
+            {
+                Select.Text = "Подуровень";
+                StackPanelCom.Visibility = Visibility.Visible;
+                ComplexityCB.ItemsSource = new string[] { "А - И", "Й - Т", "У - Я", "0 - 9" };
+                Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
+                sb.Begin();
+            }
+            else if (LevelCB.SelectedValue.ToString() == "Словосочетания")
+            {
+                StackPanelCom.Visibility = Visibility.Visible;
+                Select.Text = "Подуровень";
+                ComplexityCB.ItemsSource = new string[] { "Двойные словосочетания", "Тройные словосочетания", "Четверные словосочетания" };
+                Storyboard sb = this.FindResource("OpenComboBox") as Storyboard;
+                sb.Begin();
+            }
+            else if (LevelCB.SelectedValue.ToString() == "Набор слов")
+            {
+                StackPanelCom.Visibility = Visibility.Hidden; ButtonOk.IsEnabled = true;
+            }
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (LevelCB.SelectedValue.ToString() != "Набор слов" && ComplexityCB.SelectedValue.ToString() != "")
+            {
+                Levels = LevelCB.SelectedValue.ToString();
+                Prelevels = ComplexityCB.SelectedValue.ToString();
+                Level.Content = Levels;
+                Complexity.Content = Prelevels;
+            }
+            else
+            {
+                Levels = LevelCB.SelectedValue.ToString();
+                Prelevels = "Отсутствует";
+                Level.Content = Levels;
+                Complexity.Content = Prelevels;
+            }
         }
 
+        string book = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ0123456789";
+        string bookithoutch = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ";
+        string charsletters = "0123456789";
+        //ParseText
+        private string Levels;
+        private string Prelevels;
+        private string RandomText(string slojn)
+        {
+            try
+            {
+                string[] text = null;
+                if (slojn == "легкий")
+                {
+                    using (StreamReader sr = new StreamReader("eazy.txt"))
+                    {
+                        text = File.ReadAllLines("eazy.txt");
+                    }
+                }
+                else if (slojn == "средний")
+                {
+                    using (StreamReader sr = new StreamReader(@"midle.txt"))
+                    {
+                        text = File.ReadAllLines("midle.txt");
+                    }
+                }
+                else if (slojn == "сложный")
+                {
+                    using (StreamReader sr = new StreamReader("hard.txt"))
+                    {
+                        text = File.ReadAllLines("hard.txt");
+                    }
+                }
+                else if (slojn == "супер-сложный")
+                {
+                    using (StreamReader sr = new StreamReader("super-hard.txt"))
+                    {
+                        text = File.ReadAllLines("super-hard.txt");
+                    }
+                }
+                return text[rendChar.Next(0, text.Length - 1)].Trim();
+            }
+            catch
+            {
+                timer.Stop();
+                return "Че-то с файлами беда! Вызови фиксика Вадю. Он все починит))))";
+            }
+        }
+        private string Bukvy(string prelevel)
+        {
+            string text = string.Empty;
+            if (prelevel == "А - И")
+            {
+                for (int i = 0; i <= 100; i++)
+                {
+                    text += $"{bookithoutch[rendChar.Next(0, 9)]} ";
+                }
+            }
+            else if (prelevel == "Й - Т")
+            {
+                for (int i = 0; i <= 100; i++)
+                {
+                    text += $"{bookithoutch[rendChar.Next(10, 19)]} ";
+                }
+            }
+            else if (prelevel == "У - Я")
+            {
+                for (int i = 0; i <= 100; i++)
+                {
+                    text += $"{bookithoutch[rendChar.Next(20, 31)]} ";
+                }
+            }
+            else if (prelevel == "0 - 9")
+            {
+                for (int i = 0; i <= 7; i++)
+                {
+                    text += "0 1 2 3 4 5 6 7 8 9 ";
+                }
+            }
+            return text.Trim().ToLower();
+        }
+        private string RandBukvy(string prelevel)
+        {
+            string text = string.Empty;
+
+            if (prelevel == "А - И")
+            {
+                string letter1 = bookithoutch[rendChar.Next(0, 9)].ToString().ToLower();
+                string letter2 = bookithoutch[rendChar.Next(0, 9)].ToString().ToLower();
+                for (int i = 0; i < 35; i++)
+                {
+                    text += $"{letter1} ";
+                }
+                for (int i = 0; i < 35; i++)
+                {
+                    text += $"{letter2} ";
+                }
+            }
+            else if (prelevel == "Й - Т")
+            {
+                string letter1 = bookithoutch[rendChar.Next(10, 19)].ToString().ToLower();
+                string letter2 = bookithoutch[rendChar.Next(10, 19)].ToString().ToLower();
+                for (int i = 0; i < 35; i++)
+                {
+                    text += $"{letter1} ";
+                }
+                for (int i = 0; i < 35; i++)
+                {
+                    text += $"{letter2} ";
+                }
+            }
+            else if (prelevel == "У - Я")
+            {
+                string letter1 = bookithoutch[rendChar.Next(20, 29)].ToString().ToLower();
+                string letter2 = bookithoutch[rendChar.Next(20, 29)].ToString().ToLower();
+                for (int i = 0; i < 35; i++)
+                {
+                    text += $"{letter1} ";
+                }
+                for (int i = 0; i < 35; i++)
+                {
+                    text += $"{letter2} ";
+                }
+            }
+            else if (prelevel == "0 - 9")
+            {
+                for (int i = 0; i < 55; i++)
+                {
+                    text += charsletters[rendChar.Next(0, 9)] + " ";
+                }
+            }
+            return text.Trim();
+        }
+        private string DoubleLetters(string prelevel)
+        {
+            string text = string.Empty;
+
+            if (prelevel == "А - И")
+            {
+
+                for (int i = 0; i < 70; i++)
+                {
+                    string letter1 = bookithoutch[rendChar.Next(0, 9)].ToString().ToLower();
+                    string letter2 = bookithoutch[rendChar.Next(0, 9)].ToString().ToLower();
+                    text += $"{letter1} {letter2}";
+                }
+            }
+            else if (prelevel == "Й - Т")
+            {
+                for (int i = 0; i < 70; i++)
+                {
+                    string letter1 = bookithoutch[rendChar.Next(10, 19)].ToString().ToLower();
+                    string letter2 = bookithoutch[rendChar.Next(10, 19)].ToString().ToLower();
+                    text += $"{letter1} {letter2}";
+                }
+            }
+            else if (prelevel == "У - Я")
+            {
+                for (int i = 0; i < 70; i++)
+                {
+                    string letter1 = bookithoutch[rendChar.Next(20, 29)].ToString().ToLower();
+                    string letter2 = bookithoutch[rendChar.Next(20, 29)].ToString().ToLower();
+                    text += $"{letter1} {letter2}";
+                }
+            }
+            else if (prelevel == "0 - 9")
+            {
+                for (int i = 0; i < 55; i++)
+                {
+                    text += $"{charsletters[rendChar.Next(0, 9)]}{charsletters[rendChar.Next(0, 9)]} ";
+                }
+            }
+            return text.Trim();
+        }
+        private string Slovosochetanye(string prelevel)
+        {
+            try
+            {
+                string textnew = string.Empty;
+                string[] text = null;
+                using (StreamReader sr = new StreamReader("book.txt"))
+                {
+                    text = File.ReadAllLines("book.txt", Encoding.Default);
+                }
+                if (prelevel == "Двойные словосочетания")
+                {
+
+                    string ch1 = text[rendChar.Next(30, text.Length - 1)];
+                    string ch2 = text[rendChar.Next(30, text.Length - 1)];
+                    bool checklength = true;
+                    for (int i = 0; checklength; i++)
+                    {
+                        if (textnew.Length > 250)
+                        {
+                            checklength = !checklength;
+                        }
+                        else
+                        {
+                            textnew += $"{ch1} {ch2} ";
+                        }
+                    }
+                }
+                else if (prelevel == "Тройные словосочетания")
+                {
+                    string ch1 = text[rendChar.Next(30, text.Length - 1)];
+                    string ch2 = text[rendChar.Next(30, text.Length - 1)];
+                    string ch3 = text[rendChar.Next(30, text.Length - 1)];
+                    bool checklength = true;
+                    for (int i = 0; checklength; i++)
+                    {
+                        if (textnew.Length > 240)
+                        {
+                            checklength = !checklength;
+                        }
+                        else
+                        {
+                            textnew += $"{ch1} {ch2} {ch3} ";
+                        }
+                    }
+                }
+                else if (prelevel == "Четверные словосочетания")
+                {
+                    string ch1 = text[rendChar.Next(30, text.Length - 1)];
+                    string ch2 = text[rendChar.Next(30, text.Length - 1)];
+                    string ch3 = text[rendChar.Next(30, text.Length - 1)];
+                    string ch4 = text[rendChar.Next(30, text.Length - 1)];
+                    bool checklength = true;
+                    for (int i = 0; checklength; i++)
+                    {
+                        if (textnew.Length > 220)
+                        {
+                            checklength = !checklength;
+                        }
+                        else
+                        {
+                            textnew += $"{ch1} {ch2} {ch3} {ch4} ";
+                        }
+                    }
+                }
+                return textnew.Trim();
+            }
+            catch
+            {
+                timer.Stop();
+                return "Че-то с файлами беда! Вызови фиксика Вадю. Он все починит))))";
+            }
+        }
+        private string Slova()
+        {
+            try
+            {
+                string textnew = string.Empty;
+                string[] text = null;
+                using (StreamReader sr = new StreamReader("book.txt"))
+                {
+                    text = File.ReadAllLines("book.txt", Encoding.Default);
+                }
+                bool checklength = true;
+                for (int i = 0; checklength; i++)
+                {
+                    if (textnew.Length > 250)
+                    {
+                        checklength = !checklength;
+                    }
+                    else
+                    {
+                        textnew += $"{text[rendChar.Next(40, text.Length - 1)]} ";
+                    }
+                }
+                return textnew.Trim();
+            }
+            catch
+            {
+                timer.Stop();
+                return "Че-то с файлами беда! Вызови фиксика Вадю. Он все починит))))";
+            }
+        }
+
+        private void Raspredelenye()
+        {
+            if (Levels == "Текст")
+            {
+                linePrograms.Text = RandomText(Prelevels.ToLower());
+                timer.Start();
+            }
+            else if (Levels == "Буквы")
+            {
+                linePrograms.Text = Bukvy(Prelevels);
+                timer.Start();
+            }
+            else if (Levels == "Переменные буквы")
+            {
+                linePrograms.Text = RandBukvy(Prelevels);
+                timer.Start();
+            }
+            else if (Levels == "Двойные буквы")
+            {
+                linePrograms.Text = DoubleLetters(Prelevels);
+                timer.Start();
+            }
+            else if (Levels == "Словосочетания")
+            {
+                linePrograms.Text = Slovosochetanye(Prelevels);
+                timer.Start();
+            }
+            else if (Levels == "Набор слов")
+            {
+                linePrograms.Text = Slova();
+                timer.Start();
+            }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            timer.Stop(); ButtonOk.IsEnabled = false;
+        }
+
+        private void ComplexityCB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (LevelCB.SelectedValue.ToString() != "Набор слов" && ComplexityCB.SelectedValue != null)
+            {
+                ButtonOk.IsEnabled = true;
+            }
+        }
     }
 }

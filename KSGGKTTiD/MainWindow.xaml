@@ -11,11 +11,15 @@
         Icon="icon.ico"
         PreviewKeyUp="Window_PreviewKeyUp" Background="White" Height="700" Width="1100" MinHeight="550" MinWidth="1100"  WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Storyboard x:Key="OpenComboBox">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="StackPanelCom">
+        <Storyboard x:Key="OpenComboBox" Storyboard.TargetName="StackPanelCom">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" >
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" BeginTime="00:00:00">
+                <SplineThicknessKeyFrame KeyTime="0" Value="34,91,34,131" />
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="34, 134,34,68" />
+            </ThicknessAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <materialDesign:DialogHost>
@@ -31,10 +35,10 @@
                 <ComboBox x:Name="LevelCB"  Grid.Column="1" Foreground="#FF8522BD" SelectionChanged="ComboBox_SelectionChanged" Margin="34,91,34,131"/>
                 <StackPanel x:Name="StackPanelCom"  Opacity="0"  Grid.Column="1" VerticalAlignment="Center" Orientation="Vertical" Margin="34,133,34,68" Height="49">
                     <TextBlock  x:Name="Select" Text="Сложность" Foreground="#FF8522BD"  VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                    <ComboBox x:Name="ComplexityCB" Foreground="#FF8522BD" VerticalAlignment="Bottom" Margin="0 5"/>
+                    <ComboBox x:Name="ComplexityCB" Foreground="#FF8522BD" VerticalAlignment="Bottom" Margin="0 5" SelectionChanged="ComplexityCB_SelectionChanged"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center"  VerticalAlignment="Bottom" Margin="15">
-                    <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#FF8522BD"  VerticalAlignment="Center">
+                    <Button Click="Button_Click" Name="ButtonOk" Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#FF8522BD"  VerticalAlignment="Center" IsEnabled="False">
                         Ок
                     </Button>
                     <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignFlatButton}" Foreground="#FF8522BD"  VerticalAlignment="Center">
@@ -163,7 +167,7 @@
                     <Label Grid.Column="1" Content="Сложность" VerticalAlignment="Top" HorizontalAlignment="Center"  Foreground="White" FontSize="21"/>
                     <Label x:Name="Complexity" Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="21" Foreground="Purple" FontWeight="DemiBold"/>
 
-                    <Button Grid.Column="2" VerticalAlignment="Center"  FontSize="20" Height="45" HorizontalAlignment="Center" Content="← Изменить" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"></Button>
+                    <Button Grid.Column="2" VerticalAlignment="Center"  FontSize="20" Height="45" HorizontalAlignment="Center" Content="← Изменить" Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}" Click="Button_Click_1"></Button>
                     <Rectangle Grid.Column="2" Width="6" HorizontalAlignment="Right" Fill="Gray" Opacity="0.6" Margin="-3 0"/>
                 </Grid>
                 <Grid Grid.Column="1">

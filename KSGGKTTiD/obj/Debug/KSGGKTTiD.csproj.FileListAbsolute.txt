@@ -25,7 +25,3 @@ C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\Syste
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\ControlzEx.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MahApps.Metro.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MahApps.Metro.xml
-C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.csprojResolveAssemblyReference.cache
-C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MaterialDesignThemes.MahApps.dll
-C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\Microsoft.Xaml.Behaviors.dll
-C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MaterialDesignThemes.MahApps.pdb

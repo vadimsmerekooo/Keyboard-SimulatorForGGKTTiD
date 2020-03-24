@@ -83,7 +83,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AnotherCommandImplementation.cs" />
     <Compile Include="Resource\Window\AythRegWIndow.xaml.cs">
       <DependentUpon>AythRegWIndow.xaml</DependentUpon>
     </Compile>

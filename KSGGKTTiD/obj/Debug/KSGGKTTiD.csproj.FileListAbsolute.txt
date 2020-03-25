@@ -19,9 +19,13 @@ C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGK
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\KSGGKTTiD.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\Resource\Window\AythRegWIndow.g.cs
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\obj\Debug\Resource\Window\AythRegWIndow.baml
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\System.Windows.Interactivity.dll
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\ControlzEx.dll
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MahApps.Metro.dll
-C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\System.Windows.Interactivity.dll
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\Microsoft.Xaml.Behaviors.dll
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\ControlzEx.pdb
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\ControlzEx.xml
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MahApps.Metro.pdb
 C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\MahApps.Metro.xml
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+C:\Users\vadim\Desktop\GitHub\KeyboardSimulatorGGKTTiD\KSGGKTTiD\bin\Debug\Microsoft.Xaml.Behaviors.xml

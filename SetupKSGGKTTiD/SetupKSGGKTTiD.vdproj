@@ -194,6 +194,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.5"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.5 (x86 и x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.5"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.8"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.8 (x86 и x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.8"
+                    }
+                }
             }
         }
         "Release"
@@ -664,7 +677,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:SetupKSGGKTTiD"
         "ProductCode" = "8:{EA8166B4-F33D-47EF-A128-DC07A39C4814}"
-        "PackageCode" = "8:{FF433CEB-F928-483B-BBE5-CA81B726A712}"
+        "PackageCode" = "8:{84CCA6E4-0F79-4A0B-AFDD-022D981FE5F8}"
         "UpgradeCode" = "8:{B7D78A17-6C19-4364-8A47-A534B3FEDA8C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
